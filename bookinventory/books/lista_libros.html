@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Inventory</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .book-list { margin: 20px 0; }
+        .book-item { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+        .actions { margin-top: 10px; }
+        .button { 
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+        .delete { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+    <h1>Book Inventory</h1>
+    <a href="{% url 'book-create' %}" class="button">Add New Book</a>
+    
+    <div class="book-list">
+        {% for book in books %}
+            <div class="book-item">
+                <h3>{{ book.title }}</h3>
+                <p>Author: {{ book.author }}</p>
+                <p>ISBN: {{ book.isbn }}</p>
+                <p>Publication Date: {{ book.publication_date }}</p>
+                <div class="actions">
+                    <a href="{% url 'book-detail' book.pk %}" class="button">View</a>
+                    <a href="{% url 'book-update' book.pk %}" class="button">Edit</a>
+                    <a href="{% url 'book-delete' book.pk %}" class="button delete">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

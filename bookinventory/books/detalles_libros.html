@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ book.title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .book-detail { border: 1px solid #ddd; padding: 20px; margin: 20px 0; }
+        .button { 
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="book-detail">
+        <h1>{{ book.title }}</h1>
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+        <p><strong>Publication Date:</strong> {{ book.publication_date }}</p>
+    </div>
+    <a href="{% url 'book-list' %}" class="button">Back to List</a>
+    <a href="{% url 'book-update' book.pk %}" class="button">Edit</a>
+</body>
+</html>
